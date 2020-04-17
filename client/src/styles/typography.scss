@@ -1,0 +1,26 @@
+@import './settings.scss';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.5rem;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 2rem 0;
+  font-size: 3rem;
+}
+
+h2 {
+  font-weight: bold;
+  margin: 2rem 0;
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+
+.title-small {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.5rem;
+}

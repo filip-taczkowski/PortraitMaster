@@ -1,0 +1,74 @@
+.photo {
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+  margin: 1rem 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.7s;
+  background-color: none;
+  border-radius: 0.40rem;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+  }
+
+  &__info {
+    position: absolute;
+    left: 0;
+    color: #fff;
+    background: #fff;
+    width: 100%;
+    padding: 1rem;
+    transition: 0.5s;
+    opacity: 1;
+    bottom: 0;
+  }
+
+  &__votes-box {
+    color: #fff;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-weight: lighter;
+    text-shadow: 0 0 10px rgba(0,0,0,0.4);
+
+    &__icon {
+      margin-left: 0.2rem;
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: .5s;
+
+    button {
+      margin: 1rem;
+      border-radius: 50%;
+      padding: .80rem;
+      font-size: 2rem;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 10px rgba(0,0,0,0.2);
+
+    .photo__actions {
+      opacity: 1;
+    }
+
+    .photo__info {
+      opacity: 0;
+      bottom: -100%;
+    }
+  }
+
+}
