@@ -15,11 +15,18 @@ exports.add = async (req, res) => {
     const pattern = new RegExp(/(<\s*(strong|em)*>(([A-z]|\s)*)<\s*\/\s*(strong|em)>)|(([A-z]|\s|\.)*)/, 'g');
     const textMatched = title.match(pattern).join('');
 
+    const validateEmail = email => {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    };
+
     if(title && author && email && file) { // if fields are not empty...
       if (!acceptedExt.includes(fileExt.toLowerCase())) {
         throw new Error('Wrong ext');
       } else if (title.length > 25 || author.length > 50 || textMatched.length < title.length) {
         throw new Error('Wrong input format');
+      } else if (validateEmail(email)){
+        throw new Error('Wrong email format');
       } else {
         const newPhoto = new Photo({ title, author, email, src: fileName, votes: 0 });
         await newPhoto.save(); // ...save new photo in DB
