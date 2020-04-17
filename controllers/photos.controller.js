@@ -25,7 +25,7 @@ exports.add = async (req, res) => {
         throw new Error('Wrong ext');
       } else if (title.length > 25 || author.length > 50 || textMatched.length < title.length) {
         throw new Error('Wrong input format');
-      } else if (validateEmail(email)){
+      } else if (!validateEmail(email)){
         throw new Error('Wrong email format');
       } else {
         const newPhoto = new Photo({ title, author, email, src: fileName, votes: 0 });
